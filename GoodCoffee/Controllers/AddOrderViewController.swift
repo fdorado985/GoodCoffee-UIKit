@@ -43,6 +43,14 @@ extension AddOrderViewController: UITableViewDelegate, UITableViewDataSource {
     cell.textLabel?.text = viewModel.types[indexPath.row]
     return cell
   }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+  }
+
+  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    tableView.cellForRow(at: indexPath)?.accessoryType = .none
+  }
 }
 
 // MARK: - Setup Views
