@@ -13,6 +13,8 @@ class AddOrderViewController: UIViewController {
   // MARK: - Outlets
 
   @IBOutlet var tableView: UITableView!
+  @IBOutlet var nameTextField: UITextField!
+  @IBOutlet var emailTextField: UITextField!
 
   // MARK: - View Properties
 
@@ -27,6 +29,27 @@ class AddOrderViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureController()
+  }
+
+  // MARK: - Actions
+
+  @IBAction func saveBarButtonItemDidTap(_ sender: UIBarButtonItem) {
+    let name = nameTextField.text
+    let email = emailTextField.text
+
+    let selectedSize = coffeeSizesSegmentedControl.titleForSegment(at: coffeeSizesSegmentedControl.selectedSegmentIndex)
+    guard let selectedTypeIndexPath = self.tableView.indexPathForSelectedRow else {
+      return
+    }
+
+    self.viewModel.name = name
+    self.viewModel.email = email
+    self.viewModel.selectedSize = selectedSize
+    self.viewModel.selectedType = viewModel.types[selectedTypeIndexPath.row]
+  }
+
+  @IBAction func cancelBarButtonItemDidTap(_ sender: UIBarButtonItem) {
+    navigationController?.popViewController(animated: true)
   }
 }
 

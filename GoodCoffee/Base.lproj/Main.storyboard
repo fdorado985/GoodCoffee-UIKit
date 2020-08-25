@@ -142,10 +142,20 @@
                         <viewLayoutGuide key="safeArea" id="wUD-km-aWT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Order" largeTitleDisplayMode="never" id="vnT-4Z-dRt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bKQ-4e-v2l"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6Br-Vi-aEI"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bKQ-4e-v2l">
+                            <connections>
+                                <action selector="cancelBarButtonItemDidTap:" destination="rzL-l3-War" id="F9d-dw-6mQ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6Br-Vi-aEI">
+                            <connections>
+                                <action selector="saveBarButtonItemDidTap:" destination="rzL-l3-War" id="RdF-ag-dA4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailTextField" destination="Xer-cn-JwS" id="Rcu-ph-Mib"/>
+                        <outlet property="nameTextField" destination="rgU-2j-5pF" id="HTI-Ve-POC"/>
                         <outlet property="tableView" destination="Ucw-oU-KgK" id="Oc1-yM-9c8"/>
                     </connections>
                 </viewController>
