@@ -66,16 +66,14 @@
 		A9E4640F24F5874000884ABF /* GoodCoffee */ = {
 			isa = PBXGroup;
 			children = (
-				A9E4643024F591A900884ABF /* View Models */,
+				A9E4641E24F5874200884ABF /* Info.plist */,
+				A9E4641924F5874200884ABF /* Assets.xcassets */,
+				A9E4642524F5883D00884ABF /* Controllers */,
+				A9E4641624F5874000884ABF /* Main.storyboard */,
 				A9E4642D24F58D9300884ABF /* Models */,
 				A9E4642A24F58BE900884ABF /* Services */,
-				A9E4642524F5883D00884ABF /* Controllers */,
-				A9E4641024F5874000884ABF /* AppDelegate.swift */,
-				A9E4641224F5874000884ABF /* SceneDelegate.swift */,
-				A9E4641624F5874000884ABF /* Main.storyboard */,
-				A9E4641924F5874200884ABF /* Assets.xcassets */,
-				A9E4641B24F5874200884ABF /* LaunchScreen.storyboard */,
-				A9E4641E24F5874200884ABF /* Info.plist */,
+				A9E4643524F59CA500884ABF /* Support */,
+				A9E4643024F591A900884ABF /* View Models */,
 			);
 			path = GoodCoffee;
 			sourceTree = "<group>";
@@ -83,8 +81,8 @@
 		A9E4642524F5883D00884ABF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A9E4642624F5890400884ABF /* OrdersViewController.swift */,
 				A9E4642824F5891F00884ABF /* AddOrderViewController.swift */,
+				A9E4642624F5890400884ABF /* OrdersViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -108,10 +106,20 @@
 		A9E4643024F591A900884ABF /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				A9E4643124F591B100884ABF /* OrderViewModel.swift */,
 				A9E4643324F595A600884ABF /* AddOrderViewModel.swift */,
+				A9E4643124F591B100884ABF /* OrderViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		A9E4643524F59CA500884ABF /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A9E4641024F5874000884ABF /* AppDelegate.swift */,
+				A9E4641224F5874000884ABF /* SceneDelegate.swift */,
+				A9E4641B24F5874200884ABF /* LaunchScreen.storyboard */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
