@@ -23,12 +23,7 @@ class OrdersViewController: UITableViewController {
   // MARK: - Methods
 
   private func fetchOrders() {
-    guard let coffeeOrdersURL = URL(string: "https://guarded-retreat-82533.herokuapp.com/orders") else {
-      fatalError("URL was incorrect")
-    }
-
-    let resource = Resource<[Order]>(url: coffeeOrdersURL)
-    GCService().load(resource: resource) { [weak self] result in
+    GCService().load(resource: Order.all) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let orders):

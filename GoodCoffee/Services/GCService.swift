@@ -18,6 +18,13 @@ enum GCError: String, Error {
 struct Resource<T: Codable> {
 
   let url: URL
+  var method: HTTPMethod = .get
+  var body: Data?
+}
+
+enum HTTPMethod: String {
+  case get = "GET"
+  case post = "POST"
 }
 
 class GCService {

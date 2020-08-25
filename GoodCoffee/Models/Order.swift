@@ -24,13 +24,24 @@ enum CoffeeSize: String, Codable, CaseIterable {
 
 struct Order: Codable {
 
+  // MARK: - Properties
+
   let name: String
   let email: String
   let type: CoffeeType
   let size: CoffeeSize
-}
 
-extension Order {
+  // MARK: Computed Properties
+
+  static var all: Resource<[Order]> = {
+    guard let url = URL(string: "https://guarded-retreat-82533.herokuapp.com/orders") else {
+      fatalError("URL is incorrect")
+    }
+
+    return Resource<[Order]>(url: url)
+  }()
+
+  // MARK: - Initializer
 
   init?(_ viewModel: AddOrderViewModel) {
     guard let name = viewModel.name,
@@ -46,5 +57,24 @@ extension Order {
     self.email = email
     self.type = type
     self.size = size
+  }
+
+  // MARK: - Methods
+
+  static func create(viewModel: AddOrderViewModel) -> Resource<Order?> {
+    let order = Order(viewModel)
+    guard let url = URL(string: "https://guarded-retreat-82533.herokuapp.com/orders") else {
+      fatalError("URL is incorrect")
+    }
+
+    guard let data = try? JSONEncoder().encode(order) else {
+      fatalError("Error encoding order!")
+    }
+
+    var resource = Resource<Order?>(url: url)
+    resource.method = .post
+    resource.body = data
+
+    return resource
   }
 }
