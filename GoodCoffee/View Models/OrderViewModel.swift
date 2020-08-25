@@ -19,6 +19,10 @@ class OrdersViewModel {
 
 extension OrdersViewModel {
 
+  func numberOfOrders() -> Int {
+    return ordersViewModel.count
+  }
+
   func orderViewModel(at index: Int) -> OrderViewModel {
     return ordersViewModel[index]
   }
