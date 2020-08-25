@@ -114,14 +114,6 @@
                                     <outlet property="delegate" destination="rzL-l3-War" id="z3D-ZC-VBB"/>
                                 </connections>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LnN-UL-wWA">
-                                <rect key="frame" x="104" y="526" width="206" height="32"/>
-                                <segments>
-                                    <segment title="Small"/>
-                                    <segment title="Medium"/>
-                                    <segment title="Large"/>
-                                </segments>
-                            </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qa0-1N-D38">
                                 <rect key="frame" x="16" y="581" width="382" height="76"/>
                                 <subviews>
@@ -140,13 +132,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Qa0-1N-D38" firstAttribute="top" secondItem="LnN-UL-wWA" secondAttribute="bottom" constant="24" id="2Wd-pd-bmu"/>
+                            <constraint firstItem="Qa0-1N-D38" firstAttribute="top" secondItem="Ucw-oU-KgK" secondAttribute="bottom" constant="79" id="3rC-lh-YGp"/>
                             <constraint firstItem="Ucw-oU-KgK" firstAttribute="leading" secondItem="wUD-km-aWT" secondAttribute="leading" id="Io1-sH-8YY"/>
                             <constraint firstItem="wUD-km-aWT" firstAttribute="trailing" secondItem="Ucw-oU-KgK" secondAttribute="trailing" id="Kuf-0P-Qi9"/>
                             <constraint firstItem="Ucw-oU-KgK" firstAttribute="top" secondItem="wUD-km-aWT" secondAttribute="top" id="LNg-oQ-XW0"/>
-                            <constraint firstItem="LnN-UL-wWA" firstAttribute="top" secondItem="Ucw-oU-KgK" secondAttribute="bottom" constant="24" id="PxD-Im-zC8"/>
                             <constraint firstItem="wUD-km-aWT" firstAttribute="trailing" secondItem="Qa0-1N-D38" secondAttribute="trailing" constant="16" id="klk-4a-hGF"/>
-                            <constraint firstItem="LnN-UL-wWA" firstAttribute="centerX" secondItem="tDh-BQ-ksC" secondAttribute="centerX" id="tli-VK-Ngd"/>
                             <constraint firstItem="Qa0-1N-D38" firstAttribute="leading" secondItem="wUD-km-aWT" secondAttribute="leading" constant="16" id="yw1-J2-DPk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wUD-km-aWT"/>

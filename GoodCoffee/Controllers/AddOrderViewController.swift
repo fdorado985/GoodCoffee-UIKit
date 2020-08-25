@@ -14,9 +14,20 @@ class AddOrderViewController: UIViewController {
 
   @IBOutlet var tableView: UITableView!
 
+  // MARK: - View Properties
+
+  private var coffeeSizesSegmentedControl = UISegmentedControl()
+
   // MARK: - Properties
 
   private var viewModel = AddOrderViewModel()
+
+  // MARK: - View Lifecycle
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    configureController()
+  }
 }
 
 // MARK: - TableView Delegate & DataSource
@@ -31,5 +42,29 @@ extension AddOrderViewController: UITableViewDelegate, UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(withIdentifier: "CoffeeTypeCell", for: indexPath)
     cell.textLabel?.text = viewModel.types[indexPath.row]
     return cell
+  }
+}
+
+// MARK: - Setup Views
+
+extension AddOrderViewController {
+
+  private func configureController() {
+    setupLayouts()
+  }
+
+  private func setupLayouts() {
+    configureCoffeeSizesSegmentedControl()
+  }
+
+  private func configureCoffeeSizesSegmentedControl() {
+    coffeeSizesSegmentedControl = UISegmentedControl(items: viewModel.sizes)
+    view.addSubview(coffeeSizesSegmentedControl)
+    coffeeSizesSegmentedControl.selectedSegmentIndex = 0
+    coffeeSizesSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      coffeeSizesSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      coffeeSizesSegmentedControl.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 24)
+    ])
   }
 }
