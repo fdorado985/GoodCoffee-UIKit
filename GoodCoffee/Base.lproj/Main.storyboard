@@ -49,7 +49,7 @@
                     <navigationItem key="navigationItem" title="Good Coffee" id="70A-2R-6nd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nUi-ug-nZt">
                             <connections>
-                                <segue destination="rzL-l3-War" kind="show" id="bNn-xp-MgV"/>
+                                <segue destination="rzL-l3-War" kind="show" identifier="AddOrderViewController" id="bNn-xp-MgV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

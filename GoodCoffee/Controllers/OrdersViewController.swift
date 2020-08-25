@@ -36,6 +36,15 @@ class OrdersViewController: UITableViewController {
       }
     }
   }
+
+  // MARK: - Navigation
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "\(AddOrderViewController.self)",
+      let addOrderVC = segue.destination as? AddOrderViewController {
+      addOrderVC.delegate = self
+    }
+  }
 }
 
 // MARK: - TableView Delegate & DataSource
@@ -56,5 +65,19 @@ extension OrdersViewController {
     cell.textLabel?.text = orderVM.type
     cell.detailTextLabel?.text = orderVM.size
     return cell
+  }
+}
+
+extension OrdersViewController: AddOrderDelegate {
+
+  func addOrderViewController(_ viewController: AddOrderViewController, didSaveOrder order: Order) {
+    viewController.navigationController?.popViewController(animated: true)
+    let orderVM = OrderViewModel(order)
+    viewModel.ordersViewModel.append(orderVM)
+    tableView.insertRows(at: [IndexPath(row: viewModel.ordersViewModel.count - 1, section: 0)], with: .automatic)
+  }
+
+  func addOrderViewControllerDidClose(_ viewController: AddOrderViewController) {
+    viewController.navigationController?.popViewController(animated: true)
   }
 }

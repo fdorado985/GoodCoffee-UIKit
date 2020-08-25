@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol AddOrderDelegate: class {
+
+  func addOrderViewController(_ viewController: AddOrderViewController, didSaveOrder order: Order)
+  func addOrderViewControllerDidClose(_ viewController: AddOrderViewController)
+}
+
 class AddOrderViewController: UIViewController {
 
   // MARK: - Outlets
@@ -23,6 +29,7 @@ class AddOrderViewController: UIViewController {
   // MARK: - Properties
 
   private var viewModel = AddOrderViewModel()
+  weak var delegate: AddOrderDelegate?
 
   // MARK: - View Lifecycle
 
@@ -47,18 +54,23 @@ class AddOrderViewController: UIViewController {
     self.viewModel.selectedSize = selectedSize
     self.viewModel.selectedType = viewModel.types[selectedTypeIndexPath.row]
 
-    GCService().load(resource: Order.create(viewModel: viewModel)) { (result) in
+    GCService().load(resource: Order.create(viewModel: viewModel)) { [weak self] (result) in
+      guard let self = self else { return }
       switch result {
       case .success(let order):
-        print(order)
+        if let order = order {
+          DispatchQueue.main.async {
+            self.delegate?.addOrderViewController(self, didSaveOrder: order)
+          }
+        }
       case .failure(let error):
-        print(error)
+        print(error.localizedDescription)
       }
     }
   }
 
   @IBAction func cancelBarButtonItemDidTap(_ sender: UIBarButtonItem) {
-    navigationController?.popViewController(animated: true)
+    delegate?.addOrderViewControllerDidClose(self)
   }
 }
 
