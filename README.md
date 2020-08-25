@@ -7,6 +7,6 @@
 
 ## Description
 
-A basic coffee order app using `MVVM`.
+A basic coffee order app using `MVVM`, this application is not using any database, but it is using a service to get the coffee orders and to add new ones, it is a simple service hosted on [Heroku](https://guarded-retreat-82533.herokuapp.com/).
 
 ![goodcoffee_demo](screenshots/goodcoffee_demo.png)
