@@ -8,3 +8,5 @@
 ## Description
 
 A basic coffee order app using `MVVM`.
+
+![goodcoffee_demo](screenshots/goodcoffee_demo.png)
