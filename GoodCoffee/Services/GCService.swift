@@ -30,7 +30,12 @@ enum HTTPMethod: String {
 class GCService {
 
   func load<T>(resource: Resource<T>, completion: @escaping (Result<T, GCError>) -> Void) {
-    URLSession.shared.dataTask(with: resource.url) { (data, response, error) in
+    var request = URLRequest(url: resource.url)
+    request.httpMethod = resource.method.rawValue
+    request.httpBody = resource.body
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+    URLSession.shared.dataTask(with: request) { (data, response, error) in
       guard error == nil else {
         completion(.failure(.unableToComplete))
         return

@@ -46,6 +46,15 @@ class AddOrderViewController: UIViewController {
     self.viewModel.email = email
     self.viewModel.selectedSize = selectedSize
     self.viewModel.selectedType = viewModel.types[selectedTypeIndexPath.row]
+
+    GCService().load(resource: Order.create(viewModel: viewModel)) { (result) in
+      switch result {
+      case .success(let order):
+        print(order)
+      case .failure(let error):
+        print(error)
+      }
+    }
   }
 
   @IBAction func cancelBarButtonItemDidTap(_ sender: UIBarButtonItem) {
